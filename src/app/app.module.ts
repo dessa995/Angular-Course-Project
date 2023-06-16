@@ -10,6 +10,7 @@ import { RecepieListComponent } from './recepie-book/recepie-list/recepie-list.c
 import { RecepieDetailComponent } from './recepie-book/recepie-detail/recepie-detail.component';
 import { RecepieItemComponent } from './recepie-book/recepie-list/recepie-item/recepie-item.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { ShoppingListService } from './shopping-list/shopping-list.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
     DropdownDirective,
   ],
   imports: [BrowserModule],
-  providers: [],
+  providers: [ShoppingListService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
