@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Recepie } from '../recepie.model';
 import { RecepieService } from '../recepie.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 @Component({
   selector: 'app-recepie-detail',
   templateUrl: './recepie-detail.component.html',
@@ -14,6 +14,7 @@ export class RecepieDetailComponent implements OnInit {
 
   constructor(
     private recipeService: RecepieService,
+    private router: Router,
     private route: ActivatedRoute
   ) {}
 
@@ -26,5 +27,10 @@ export class RecepieDetailComponent implements OnInit {
 
   onAddToShoppingList() {
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+  }
+
+  onEditRecipe() {
+    // this.router.navigate(['edit'], { relativeTo: this.route });
+    this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });
   }
 }
