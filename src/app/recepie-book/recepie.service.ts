@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { Recepie } from './recepie.model';
 import { Ingredient } from '../shared/ingredient.mode;';
@@ -8,7 +8,7 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
   providedIn: 'root',
 })
 export class RecepieService {
-  recipeSelected = new EventEmitter<Recepie>();
+  // recipeSelected = new EventEmitter<Recepie>();
 
   private recepies: Recepie[] = [
     new Recepie(
