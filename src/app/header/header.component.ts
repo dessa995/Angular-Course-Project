@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+
+import { DataStorageService } from '../shared/data-storage.service';
 // import { DropdownDirective } from '../shared/dropdown.directive';
 
 @Component({
@@ -11,4 +13,16 @@ export class HeaderComponent {
   // onSelect(feature: string) {
   //   this.featureSelected.emit(feature);
   // }
+
+  constructor(private dataStorageService: DataStorageService) {}
+
+  onSaveData() {
+    this.dataStorageService.storeData().subscribe((response: Response) => {
+      console.log(response);
+    });
+  }
+
+  onFetchData() {
+    this.dataStorageService.fetchData();
+  }
 }

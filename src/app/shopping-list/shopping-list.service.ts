@@ -23,6 +23,11 @@ export class ShoppingListService {
     return this.ingredients[index];
   }
 
+  setIngredients(ingredients: Ingredient[]) {
+    this.ingredients = ingredients;
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
   constructor() {}
 
   addIngredient(ingredient: Ingredient) {

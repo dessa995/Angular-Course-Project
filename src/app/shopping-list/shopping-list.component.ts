@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { Ingredient } from '../shared/ingredient.mode;';
 import { ShoppingListService } from './shopping-list.service';
+import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -10,7 +11,10 @@ import { ShoppingListService } from './shopping-list.service';
   styleUrls: ['./shopping-list.component.css'],
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
-  constructor(private shoppingListService: ShoppingListService) {}
+  constructor(
+    private shoppingListService: ShoppingListService,
+    private dataStorageService: DataStorageService
+  ) {}
   ingredients: Ingredient[];
   private subscription: Subscription;
 
@@ -25,6 +29,18 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
 
   onEditItem(index: number) {
     this.shoppingListService.startedEditing.next(index);
+  }
+
+  onSaveList() {
+    this.dataStorageService
+      .storeShoppingList()
+      .subscribe((response: Response) => {
+        console.log(response);
+      });
+  }
+
+  onFetchlist() {
+    this.dataStorageService.fetchShoppingList();
   }
 
   ngOnDestroy(): void {

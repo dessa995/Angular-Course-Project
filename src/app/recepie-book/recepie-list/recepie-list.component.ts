@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Recepie } from '../recepie.model';
 import { RecepieService } from '../recepie.service';
 import { Subscription } from 'rxjs';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Component({
   selector: 'app-recepie-list',
@@ -17,7 +18,8 @@ export class RecepieListComponent implements OnInit, OnDestroy {
   constructor(
     private recipeService: RecepieService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dataStorageService: DataStorageService
   ) {}
 
   ngOnInit() {
@@ -25,7 +27,7 @@ export class RecepieListComponent implements OnInit, OnDestroy {
       (recipes: Recepie[]) => {
         this.recipes = recipes;
       }
-    )
+    );
     this.recipes = this.recipeService.getRecipes();
   }
 

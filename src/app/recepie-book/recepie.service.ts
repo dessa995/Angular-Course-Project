@@ -27,6 +27,11 @@ export class RecepieService {
     ),
   ];
 
+  setRecipes(recipes: Recepie[]) {
+    this.recepies = recipes;
+    this.recipesChanged.next(this.recepies.slice());
+  }
+
   getRecipes() {
     return this.recepies.slice();
   }
@@ -43,12 +48,12 @@ export class RecepieService {
 
   addRecipe(recipe: Recepie) {
     this.recepies.push(recipe);
-    this.recipesChanged.next(this.recepies.slice())
+    this.recipesChanged.next(this.recepies.slice());
   }
 
   updateRecipe(index: number, newRecipe: Recepie) {
     this.recepies[index] = newRecipe;
-    this.recipesChanged.next(this.recepies.slice())
+    this.recipesChanged.next(this.recepies.slice());
   }
 
   deleteRecipe(index: number) {
