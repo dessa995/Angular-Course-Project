@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { DataStorageService } from '../shared/data-storage.service';
+import { AuthService } from '../auth/auth.service';
 // import { DropdownDirective } from '../shared/dropdown.directive';
 
 @Component({
@@ -14,7 +15,8 @@ export class HeaderComponent {
   //   this.featureSelected.emit(feature);
   // }
 
-  constructor(private dataStorageService: DataStorageService) {}
+  constructor(private dataStorageService: DataStorageService,
+              public authService: AuthService) {}
 
   onSaveData() {
     this.dataStorageService.storeData().subscribe((response: Response) => {
@@ -24,5 +26,9 @@ export class HeaderComponent {
 
   onFetchData() {
     this.dataStorageService.fetchData();
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 }
