@@ -9,7 +9,7 @@ import { RecepieDetailComponent } from "./recepie-detail/recepie-detail.componen
 
 const recipesRoutes: Routes = [
   {
-    path: 'recipes',
+    path: '',
     component: RecepieBookComponent,
     children: [
       { path: '', component: RecipeStartComponent },
@@ -24,6 +24,9 @@ const recipesRoutes: Routes = [
   imports: [
     RouterModule.forChild(recipesRoutes)
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    AuthGuardService,
+  ]
 })
 export class RecipesRoutingModule {}
